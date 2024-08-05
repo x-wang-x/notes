@@ -10,10 +10,17 @@
     background-color: var(--dark-3);
 }
 .btn.back {
+    grid-column: 1;
     justify-self: start;
     grid-row: 1;
 }
 .btn.save {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+}
+.btn.add {
+    grid-column: 1/4;
     grid-row: 1;
     justify-self: end;
 }

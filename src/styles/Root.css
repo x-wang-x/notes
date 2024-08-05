@@ -6,6 +6,8 @@
 }
 .container {
     display: grid;
+    grid-template-columns: min-content auto min-content;
+    gap : 0.5rem;
     width: 90%;
     margin: 1rem auto;
     background-color: var(--dark-2);
