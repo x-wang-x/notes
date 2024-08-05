@@ -2,8 +2,9 @@ import './styles/Root.css'
 import CardCollection from './components/CardCollection'
 import Button from './components/Button'
 import Textarea from './components/Textarea'
+import { useState,useContext, ReactEventHandler } from 'react'
 
-import { useState,useEffect } from 'react'
+
 
 function Root() {
   enum states {
@@ -12,11 +13,25 @@ function Root() {
     Edit
   }
   const [content,setContent] = useState<string>()
-  const [state,setState] = useState(states.Home)
+  const [title,setTitle] = useState<string>()
 
-  useEffect(() => {
-    console.log(state)
-  }, [state]);
+  const [state,setState] = useState(states.Home)
+  let containerItem
+  if(state == states.Home){
+    containerItem = 
+    <>
+    <Button class='add' text="Add More" handleClick={addMore}/>
+    <CardCollection/>
+    </>
+  }
+  else {
+    containerItem =
+    <>
+    <Button class="back" text="Back" handleClick={()=>setState(states.Home)}/>
+    <Button class="save" text="Save" handleClick={submit}/>
+    <Textarea handleChangeTitle={(e : React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} handleKeyArea={handleKey} handleChangeArea={handleChange} content={content} title={title}/>  
+    </>
+  }
   
 
   function handleChange(e : React.ChangeEvent<HTMLTextAreaElement>) {
@@ -49,24 +64,39 @@ function Root() {
     setContent(undefined);
     setState(states.AddNew)
   }
-  let contentBox;
-  let btn;
-  if (state == states.Home) {
-    contentBox = <CardCollection/>
-    btn = <Button class='save' text="Add More" handleClick={addMore}/>
-  }
-  else {
-      btn = 
-      <>
-        <Button class="back" text="Back" handleClick={()=>setState(states.Home)}/>
-        <Button class="save" text="Save" handleClick={()=>setState(states.Edit)}/>
-      </>
-      contentBox = <Textarea handleKey={handleKey} handleChange={handleChange} content={content}/>
+  function submit(){
+    interface myData {
+      id : number,
+      title : string | undefined,
+      content : string | undefined
+    }
+    let toBeWritten : myData = {
+      id : 1,
+      title : title,
+      content : content
+    }
+    if(state==states.AddNew){
+      var data : Array<myData> = JSON.parse(localStorage.getItem("data")!)
+      if (data == null){
+        localStorage.setItem("data",JSON.stringify(
+          [toBeWritten]
+          ))
+      }
+      else {
+        toBeWritten = {
+          id : data[data.length-1].id+1,
+          title : title,
+          content : content
+        }
+        data.push(toBeWritten)
+        localStorage.setItem("data",JSON.stringify(data))
+      }
+      setState(states.Home)
+    }
   }
   return (
     <div className='container'>
-      {btn}
-      {contentBox}
+      {containerItem}
     </div>
   )
 }

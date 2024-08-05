@@ -1,21 +1,27 @@
 import { useState } from "react"
 import "../styles/Textarea.css"
 interface TAprops {
-    handleKey : React.KeyboardEventHandler
-    handleChange : React.ChangeEventHandler
+    handleKeyArea : React.KeyboardEventHandler
+    handleChangeArea : React.ChangeEventHandler
+    handleChangeTitle : React.ChangeEventHandler
+    title : string | undefined
     content : string | undefined
 }
 
 function Textarea(props : TAprops) {
   return (
-    <textarea
-      spellCheck = "false"
-      className="text"
-      onChange={e => props.handleChange(e)}
-      onKeyDown={e => props.handleKey(e)}
-    >
-      {props.content}
-    </textarea>
+    <>
+        <input className="title" onChange={e => props.handleChangeTitle(e)} type="text" placeholder="Title" value={props.title}/>
+        <textarea
+          spellCheck = "false"
+          className="text"
+          onChange={e => props.handleChangeArea(e)}
+          onKeyDown={e => props.handleKeyArea(e)}
+        >
+          {props.content}
+        </textarea>
+    </>
+
   )
 }
 
