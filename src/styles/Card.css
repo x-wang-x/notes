@@ -2,16 +2,17 @@
     grid-row: 2;
     grid-column: 1/4;
     margin-top: 1rem;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 .card {
+    min-width: 0;
     border: 2px solid var(--dark-1);
     flex-shrink: 1;
     flex-grow: 1;
-    width: 30%;
+    width: 40vh;
+    height: 30vh;
     color: var(--dark-1);
     border-radius: 1rem;
     display: flex;
@@ -30,8 +31,13 @@
     padding: 0 1rem;
 }
 .content {
-    align-self: flex-start;
+    text-align: left;
+    height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: clip;
 }
 .update {
+    font-size: x-small;
     align-self: end;
 }
