@@ -1,10 +1,9 @@
-import '../styles/Card.css'
 function Card() {
   return (
     <div className='card'>
-        <h1>Title</h1>
-        <p>Content</p>
-        <p>Last update</p>
+        <h1 className='title'>Title</h1>
+        <p className='content'>Content</p>
+        <p className='update'>Last update : </p>
     </div>
   )
 }

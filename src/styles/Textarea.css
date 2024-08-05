@@ -1,0 +1,17 @@
+.text {
+    border: none;
+    outline: none;
+    color: var(--dark-1);
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: left;
+    height: 90vh;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: var(--dark-4);
+    resize: none ;  
+}
+.text:focus {
+    outline: 2px solid var(--dark-3) ;
+    box-shadow: 0 0 1rem var(--dark-3);
+}

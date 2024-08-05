@@ -1,51 +1,13 @@
 #root {
+    height: 100%;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 .container {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
     width: 90%;
-    margin: 2rem auto;
+    margin: 1rem auto;
     background-color: var(--dark-2);
     box-sizing: border-box;
-}
-.btn {
-    grid-column: 1/4;
-    justify-self: end;
-    position: relative;
-    cursor:pointer;
-    font-size: medium;
-    padding: 10px 25px;
-    color: var(--dark-4);
-    border-radius: 5px;
-    border: none;
-    background-color: var(--dark-3);
-}
-
-.btn:hover {
-    color: var(--dark-3);
-    background-color: var(--dark-4);
-}
-
-.table {
-    width: 100%;
-    border-radius: 1rem;
-    margin: 1rem auto;
-    overflow: hidden;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 1rem;
-}
-thead th {
-    color: var(--dark-4);
-    background-color: var(--dark-3);
-}
-tbody td {
-    background-color: var(--dark-4);
-}
-.txt {
-    display: none;
 }

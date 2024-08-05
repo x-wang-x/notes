@@ -1,0 +1,25 @@
+.btn {
+    position: sticky;
+    top : 1rem;
+    cursor:pointer;
+    font-size: medium;
+    padding: 10px 25px;
+    color: var(--dark-4);
+    border-radius: 5px;
+    border: 2px solid var(--dark-1);
+    background-color: var(--dark-3);
+}
+.btn.back {
+    justify-self: start;
+    grid-row: 1;
+}
+.btn.save {
+    grid-row: 1;
+    justify-self: end;
+}
+.btn:hover {
+    color: var(--dark-3);
+    background-color: var(--dark-4);
+    border:2px solid var(--dark-3);
+    box-shadow: 0 0 1rem var(--dark-3);
+}
